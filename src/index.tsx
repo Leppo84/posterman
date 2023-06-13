@@ -4,12 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import "./i18n";
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    {/* <I18nProvider lng="it" resources={i18n}> */}
+
     <App />
+    {/* </I18nProvider> */}
+
   </React.StrictMode>
 );
 
