@@ -12,8 +12,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     {/* <I18nProvider lng="it" resources={i18n}> */}
-
-    <App />
+      <App />
     {/* </I18nProvider> */}
 
   </React.StrictMode>

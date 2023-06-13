@@ -2,35 +2,13 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 // import Backend from 'i18next-http-backend';
 // import LanguageDetector from 'i18next-browser-languagedetector';
+import en from "./locals/en/index"
+import it from "./locals/it/index"
+          
+const resources = {en,it};
 
-// the translations
-// (tip move them in a JSON file and import them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
-const resources = {
-  en: {
-    translation: {
-      "selectLanguage": "Select language",
-      "languageEn": "English",
-      "languageIt": "Italian",
-      "welcome": "Welcome",
-      "hello": "Hello",
-      "howareyou": "How are you?"
-    }
-  },
-  it: {
-    translation: {
-      "selectLanguage": "Seleziona il linguaggio",
-      "languageEn": "Inglese",
-      "languageIt": "Italiano",
-      "welcome": "Benvenuto",
-      "hello": "Ciao",
-      "howareyou": "Come stai?"
-    }
-  }
-};
-
-i18n
-  .use(initReactI18next) // passes i18n down to react-i18next
+  i18n
+  .use(initReactI18next)
   .init({
     resources,
     lng: "it", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
