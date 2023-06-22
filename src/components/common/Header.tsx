@@ -1,36 +1,31 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import { Container } from '@mui/material';
-import Navbar from './Navbar';
-// import Link from 'docs/src/modules/components/Link';
-// import ROUTES from 'docs/src/route';
-// import FEATURE_TOGGLE from 'docs/src/featureToggle';
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import { Box, Container } from "@mui/material";
+import Navbar from "./Navbar";
 
-const Header: React.FC = (() => {
+const Header: React.FC = () => {
+	const bannerMessage = `🚀  Questo sito è altamente instabile. Don't try this at home  🚀`;
 
-  const bannerMessage = `🚀  Questo sito è altamente instabile. Don't try this at home  🚀`
-
-  return (
-
-        <Container>
-      <Typography
-        fontWeight="medium"
-        sx={(theme) => ({
-          color: '#fff',
-          p: '12px',
-          display: 'flex',
-          flexDirection: { xs: 'column', md: 'row' },
-          alignItems: { xs: 'start', sm: 'center' },
-          justifyContent: 'center',
-          fontSize: theme.typography.pxToRem(13),
-          background: "black"
-        })}
-        >
-        {bannerMessage}
-        </Typography>
-        <Navbar />
-      </Container>
-    )
-});
+	return (
+		<Box>
+			<Typography
+				fontWeight="medium"
+				sx={(theme) => ({
+					color: "#fff",
+					py: "12px",
+					display: "flex",
+					flexDirection: "row",
+					alignItems: "center",
+					justifyContent: "center",
+					fontSize: 14,
+					background: "black",
+				})}
+			>
+				{bannerMessage}
+			</Typography>
+			<Navbar />
+		</Box>
+	);
+};
 
 export default Header;
