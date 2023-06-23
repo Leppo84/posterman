@@ -1,7 +1,7 @@
 import { Card, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Post } from "../../model/Post";
-import { getUser } from "../../services/apiPost";
+import { getUsers } from "../../services/apiPost";
 import { useQuery } from "react-query";
 
 interface PostCardProps {
@@ -9,14 +9,14 @@ interface PostCardProps {
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-	const {
-		isLoading,
-		error,
-		data: user,
-	} = useQuery({
-		queryKey: ["user", post.userId],
-		queryFn: () => getUser(post.userId),
-	});
+	// 	const {
+	// 		isLoading,
+	// 		error,
+	// 		data: user,
+	// 	} = useQuery({
+	// 		queryKey: ["user", post.userId],
+	// 		queryFn: () => getUser(post.userId),
+	// 	});
 
 	return (
 		<Card
@@ -25,9 +25,9 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 				bgcolor: "lightcyan",
 			}}
 		>
-			<Typography variant="body1">Author: {user?.name}</Typography>
+			{/* <Typography variant="body1">Author: {user?.name}</Typography>
 			<Typography variant="h4">{post.title}</Typography>
-			<Typography variant="body2">{post.body}</Typography>
+			<Typography variant="body2">{post.body}</Typography> */}
 		</Card>
 	);
 };
