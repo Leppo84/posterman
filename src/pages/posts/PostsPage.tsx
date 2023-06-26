@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import PostCard from "../../components/posts/PostCard";
-import { getPosts } from "../../services/apiPost";
+import { getPosts } from "../../services/api";
 import { Post } from "../../model/Post";
 import Spinner from "../../components/common/Spinner";
 
