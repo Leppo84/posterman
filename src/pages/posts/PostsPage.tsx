@@ -1,7 +1,7 @@
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import PostCard from "../../components/posts/PostCard";
-import { getPosts } from "../../services/api";
+import { getDbPosts } from "../../services/api";
 import { Post } from "../../model/Post";
 import Spinner from "../../components/common/Spinner";
 
@@ -11,7 +11,7 @@ export function PostsPage() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const posts = await getPosts();
+				const posts = await getDbPosts();
 				setAllPosts(posts);
 			} catch (error) {
 				console.error(error);
@@ -51,7 +51,4 @@ export function PostsPage() {
 			</Grid>
 		</Container>
 	);
-}
-function setPost() {
-	throw new Error("Function not implemented.");
 }

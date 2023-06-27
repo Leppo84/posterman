@@ -1,16 +1,14 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Button, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import Spinner from "../../components/common/Spinner";
 import { getDbUsers } from "../../services/api";
-import { Record } from "pocketbase";
+import { User } from "../../model/User";
 
 export function UsersPage() {
 	const { isLoading, error, data } = useQuery("users", getDbUsers);
 
-	console.log("ma come? ", data);
-
-	const [allUsers, setAllUsers] = useState<Record[]>([]);
+	const [allUsers, setAllUsers] = useState<User[]>([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -20,6 +18,9 @@ export function UsersPage() {
 			} catch (error) {
 				console.error(error);
 			}
+			// getDbUsers()
+			// 	.then((users) => setAllUsers(users))
+			// 	.catch((err) => console.log(err));
 		};
 		fetchData();
 	}, []);
@@ -27,6 +28,17 @@ export function UsersPage() {
 	if (error) {
 		return <div>An error occurred</div>;
 	}
+
+	// Create
+
+	// const loadUserData = () => {
+	// 	loadJsonDataToDb().then(() => console.log("terminato"));
+	// };
+
+	// const loadWorker = async () => {
+	// 	await loadJsonDataToDb();
+	// 	fetchData();
+	// };
 
 	console.log("Coso due: ", data);
 
@@ -38,7 +50,7 @@ export function UsersPage() {
 			{!allUsers ? (
 				<Spinner></Spinner>
 			) : (
-				allUsers.map((user: Record) => <p key={user.id}>{user.name}</p>)
+				allUsers.map((user: User) => <p key={user.id}>{user.name}</p>)
 			)}
 		</Container>
 	);

@@ -1,40 +1,34 @@
 import { Card, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Post } from "../../model/Post";
-// import { useQuery } from "react-query";
 // import Spinner from "../common/Spinner";
+// import { getAuthor } from "../../services/api";
+import { useQuery } from "react-query";
 import { getAuthor } from "../../services/api";
-import { Record } from "pocketbase";
 
 interface PostCardProps {
 	post: Post;
 }
 
 const PostCard: React.FC<PostCardProps> = ({ post }) => {
-	const [author, setAuthor] = useState<Record>();
+	const { isLoading, error, data } = useQuery("author", () =>
+		getAuthor(post.userId)
+	);
+
+	const [author, setAuthor] = useState<string>();
 
 	useEffect(() => {
-		const fetchAuthor = async () => {
-			try {
-				const author = await getAuthor(post.id);
-				setAuthor(author);
-			} catch (error) {
-				console.log(error);
-			}
+		const fetchData = async () => {
+			getAuthor(post.userId)
+				.then((user) => setAuthor(user))
+				.catch((err) => console.log(err));
 		};
-		fetchAuthor();
+		fetchData();
 	}, []);
 
-	// const {
-	// 	isLoading,
-	// 	error,
-	// 	data: author,
-	// } = useQuery({
-	// 	queryKey: ["user", post.userId],
-	// 	queryFn: () => getAuthor(post.userId),
-	// });
-
-	console.log("non va: ", author?.name);
+	if (error) {
+		return <div>An error occurred</div>;
+	}
 
 	return (
 		<Card
@@ -43,7 +37,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 				bgcolor: "lightcyan",
 			}}
 		>
-			<Typography variant="body1">Author: {author?.id}</Typography>
+			<Typography variant="body1">Author: {author}</Typography>
 			<Typography variant="h4">{post.title}</Typography>
 			<Typography variant="body2">{post.body}</Typography>
 		</Card>
