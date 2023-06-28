@@ -18,9 +18,6 @@ export function UsersPage() {
 			} catch (error) {
 				console.error(error);
 			}
-			// getDbUsers()
-			// 	.then((users) => setAllUsers(users))
-			// 	.catch((err) => console.log(err));
 		};
 		fetchData();
 	}, []);
@@ -28,17 +25,6 @@ export function UsersPage() {
 	if (error) {
 		return <div>An error occurred</div>;
 	}
-
-	// Create
-
-	// const loadUserData = () => {
-	// 	loadJsonDataToDb().then(() => console.log("terminato"));
-	// };
-
-	// const loadWorker = async () => {
-	// 	await loadJsonDataToDb();
-	// 	fetchData();
-	// };
 
 	console.log("Coso due: ", data);
 

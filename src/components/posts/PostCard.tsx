@@ -1,8 +1,7 @@
 import { Card, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Post } from "../../model/Post";
-// import Spinner from "../common/Spinner";
-// import { getAuthor } from "../../services/api";
+import Spinner from "../common/Spinner";
 import { useQuery } from "react-query";
 import { getAuthor } from "../../services/api";
 
@@ -37,7 +36,11 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 				bgcolor: "lightcyan",
 			}}
 		>
-			<Typography variant="body1">Author: {author}</Typography>
+			{isLoading ? (
+				<Spinner></Spinner>
+			) : (
+				<Typography variant="body1">Author: {author}</Typography>
+			)}
 			<Typography variant="h4">{post.title}</Typography>
 			<Typography variant="body2">{post.body}</Typography>
 		</Card>

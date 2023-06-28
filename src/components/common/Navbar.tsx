@@ -17,8 +17,14 @@ import { Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 const Navbar: React.FC = () => {
-	const pagesLink = ["posts", "users"];
-	const settings = ["Profile", "Logout"];
+	const pagesLink = [
+		{ name: "posts", id: 1 },
+		{ name: "users", id: 2 },
+	];
+	const settings = [
+		{ name: "Profile", id: 3 },
+		{ name: "Logout", id: 4 },
+	];
 
 	const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
 		null
@@ -91,10 +97,10 @@ const Navbar: React.FC = () => {
 						{/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
 						<Box sx={{ flexGrow: 10, textAlign: "start" }}>
 							{pagesLink.map((page) => (
-								<NavLink to={page}>
+								<NavLink to={page.name}>
 									<Button
-										key={page}
-										onClick={handleCloseNavMenu}
+										key={page.id}
+										// onClick={handleCloseNavMenu}
 										sx={{
 											my: 2,
 											color: "white",
@@ -102,12 +108,11 @@ const Navbar: React.FC = () => {
 											textDecoration: "none",
 										}}
 									>
-										{t(page)}
+										{t(page.name)}
 									</Button>
 								</NavLink>
 							))}
 						</Box>
-
 						<Box sx={{ flexGrow: 2, textAlign: "end" }}>
 							<Tooltip title="Open settings">
 								<IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
@@ -131,8 +136,8 @@ const Navbar: React.FC = () => {
 								onClose={handleCloseUserMenu}
 							>
 								{settings.map((setting) => (
-									<MenuItem key={setting} onClick={handleCloseUserMenu}>
-										<Typography textAlign="center">{setting}</Typography>
+									<MenuItem key={setting.id} onClick={handleCloseUserMenu}>
+										<Typography textAlign="center">{setting.name}</Typography>
 									</MenuItem>
 								))}
 							</Menu>

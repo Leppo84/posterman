@@ -4,7 +4,7 @@ import { Box, Container } from "@mui/material";
 import Navbar from "./Navbar";
 
 const Header: React.FC = () => {
-	const bannerMessage = `🚀  Questo sito è altamente instabile. Don't try this at home  🚀`;
+	const bannerMessage = `🚀 Site under construction. Warning: some pages may explode!  🚀`;
 
 	return (
 		<Box>

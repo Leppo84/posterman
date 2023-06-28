@@ -49,3 +49,12 @@ export async function getDbPosts(): Promise<Post[]> {
 // 	}
 // 	await Promise.all(promises);
 // }
+
+export async function addPost(post: Partial<Post>) {
+	try {
+		// const res = await ProductsApi.add(product);
+		pb.collection("posts").create(post);
+	} catch (e) {
+		console.log("error: ", e);
+	}
+}
