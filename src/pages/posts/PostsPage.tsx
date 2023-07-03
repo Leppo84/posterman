@@ -20,6 +20,7 @@ import PostCard from "../../components/posts/PostCard";
 import { addPost, getDbPosts } from "../../services/api";
 import { Post } from "../../model/Post";
 import Spinner from "../../components/common/Spinner";
+import { useQuery } from "react-query";
 
 // FORM SETTINGS
 
@@ -30,6 +31,10 @@ const initialState: Partial<Post> = {
 };
 
 export function PostsPage() {
+	//  GET POSTS
+
+	const { isLoading, error, data } = useQuery("users", getDbPosts);
+
 	const [allPosts, setAllPosts] = useState<Post[]>([]);
 
 	useEffect(() => {
@@ -135,7 +140,7 @@ export function PostsPage() {
 			</Container>
 			<Grid container spacing={3}>
 				{allPosts ? (
-					allPosts.slice(0, 30).map((post: Post) => (
+					allPosts.slice(-10).map((post: Post) => (
 						<Grid
 							key={post.id}
 							item

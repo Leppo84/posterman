@@ -6,6 +6,8 @@ import { getDbUsers } from "../../services/api";
 import { User } from "../../model/User";
 
 export function UsersPage() {
+	// GET USERS
+
 	const { isLoading, error, data } = useQuery("users", getDbUsers);
 
 	const [allUsers, setAllUsers] = useState<User[]>([]);

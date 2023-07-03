@@ -8,6 +8,7 @@ import { PostsPage } from "./pages/posts/PostsPage";
 import { UsersPage } from "./pages/users/UsersPage";
 import { Container } from "@mui/material";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { PostDetail } from "./pages/posts/PostDetail";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,7 @@ function App() {
 					<Routes>
 						<Route path="" element={<HomePage />} />
 						<Route path="posts" element={<PostsPage />} />
+						<Route path="posts/:postId" element={<PostDetail />} />
 						<Route path="users" element={<UsersPage />} />
 						<Route path="*" element={<Navigate to="" />} />
 					</Routes>

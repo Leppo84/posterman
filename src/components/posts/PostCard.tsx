@@ -1,9 +1,9 @@
-import { Card, Typography } from "@mui/material";
+import { Button, Card, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { Post } from "../../model/Post";
 import Spinner from "../common/Spinner";
 import { useQuery } from "react-query";
-import { getAuthor } from "../../services/api";
+import { getAuthor, removePost } from "../../services/api";
 
 interface PostCardProps {
 	post: Post;
@@ -34,6 +34,7 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 			sx={{
 				color: "slategray",
 				bgcolor: "lightcyan",
+				p: 1,
 			}}
 		>
 			{isLoading ? (
@@ -43,6 +44,14 @@ const PostCard: React.FC<PostCardProps> = ({ post }) => {
 			)}
 			<Typography variant="h4">{post.title}</Typography>
 			<Typography variant="body2">{post.body}</Typography>
+			<Button
+				variant="outlined"
+				color="error"
+				onClick={() => removePost(post.id)}
+				sx={{ m: 2 }}
+			>
+				CANCELLA POST
+			</Button>
 		</Card>
 	);
 };
